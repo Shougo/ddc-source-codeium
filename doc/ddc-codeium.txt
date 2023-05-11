@@ -1,0 +1,60 @@
+*ddc-source-codeium.txt*	Codeium completion for ddc.vim
+
+Author: Shougo <Shougo.Matsu at gmail.com>
+License: MIT license
+
+CONTENTS					*ddc-source-codeium-contents*
+
+Introduction		|ddc-source-codeium-introduction|
+Install			|ddc-source-codeium-install|
+Examples		|ddc-source-codeium-examples|
+FAQ			|ddc-source-codeium-faq|
+
+
+==============================================================================
+INTRODUCTION				*ddc-source-codeium-introduction*
+
+This source collects items from Codeium.
+
+NOTE: It is based on "ddc-codeium".
+
+https://github.com/yuki-yano/ddc-codeium
+
+
+==============================================================================
+INSTALL						*ddc-source-codeium-install*
+
+Please install both "codeium.vim", "ddc.vim" and "denops.vim".
+
+https://github.com/Exafunction/codeium.vim
+https://github.com/Shougo/ddc.vim
+https://github.com/vim-denops/denops.vim
+
+
+==============================================================================
+EXAMPLES					*ddc-source-codeium-examples*
+>
+>
+	let g:codeium_disable_bindings = 1
+
+	call ddc#custom#patch_global('sources', ['codeium'])
+	
+	call ddc#custom#patch_global('sourceOptions', #{
+	\   codeium: #{
+	\     matchers: [],
+	\     mark: 'codeium',
+	\     minAutoCompleteLength: 0,
+	\   }
+	\ })
+<
+
+==============================================================================
+FAQ						*ddc-source-codeium-faq*
+
+Q: The items is not updated or generated.
+
+A: They are not updated if cached.  It is performance reason.  You can refresh
+them by |ddc#map#manual_complete()| manually.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:noet:

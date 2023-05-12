@@ -4,7 +4,7 @@ import {
   OnCompleteDoneArguments,
 } from "https://deno.land/x/ddc_vim@v3.4.0/base/source.ts";
 import { DdcGatherItems } from "https://deno.land/x/ddc_vim@v3.4.0/types.ts";
-import { batch, Denops, fn } from "https://deno.land/x/ddc_vim@v3.4.0/deps.ts";
+import { fn } from "https://deno.land/x/ddc_vim@v3.4.0/deps.ts";
 import { delay } from "https://deno.land/std@0.186.0/async/delay.ts";
 
 export type CompletionMetadata = {
@@ -39,25 +39,55 @@ export class Source extends BaseSource<Params> {
       await args.denops.call("codeium#Complete");
 
       while (!(await fn.exists(args.denops, "b:_codeium_completions.items"))) {
-        await delay(50);
+        await delay(10);
       }
 
       const completions = await args.denops.call(
         "eval",
-        "b:_codeium_completions.items",
+        "get(get(b:, '_codeium_completions', {}), 'items', [])",
       ) as CompletionItem[];
 
-      const items = completions.map((completion) => {
+      const items: DdcGatherItems = [];
+      for (const completion of completions) {
         const text = completion.completion.text;
         const word = text.split("\n")[0].slice(args.completePos);
+        const match = /^(\s*\w+)\S*/.exec(word);
+        const isMultiLine = text.split("\n").length > 1;
 
-        return {
-          word,
-          user_data: {
-            word: text,
-          },
-        };
-      });
+        const wordsSet = new Set<string>();
+        if (match !== null) {
+          // word
+          wordsSet.add(match[0]);
+          // WORD
+          wordsSet.add(match[1]);
+        }
+        // One line
+        wordsSet.add(word);
+
+        for (const partialWord of [...wordsSet].sort()) {
+          items.push({
+            word: partialWord,
+          });
+        }
+
+        if (isMultiLine) {
+          // Full
+          const indent = /^(?<indent>\s*).+/.exec(text)?.groups?.indent;
+          const info = indent != null
+            ? text.split("\n").map((line) => line.slice(indent.length)).join(
+              "\n",
+            )
+            : text;
+          items.push({
+            word,
+            abbr: word + " ...",
+            info,
+            user_data: {
+              word: text,
+            },
+          });
+        }
+      }
 
       await args.denops.call("ddc#update_items", this.name, items);
     };

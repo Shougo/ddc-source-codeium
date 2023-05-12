@@ -44,7 +44,7 @@ EXAMPLES					*ddc-source-codeium-examples*
 	\     matchers: [],
 	\     mark: 'codeium',
 	\     minAutoCompleteLength: 0,
-	\     dup: 'force',
+	\     isVolatile: true,
 	\   }
 	\ })
 <

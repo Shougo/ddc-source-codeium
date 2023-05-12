@@ -79,7 +79,7 @@ export class Source extends BaseSource<Params> {
           : text;
         items.push({
           word,
-          abbr: word + " ...",
+          abbr: `${word} ...`,
           info,
           user_data: {
             word: text,

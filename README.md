@@ -28,6 +28,7 @@ call ddc#custom#patch_global('sourceOptions', #{
       \     mark: 'codeium',
       \     matchers: [],
       \     minAutoCompleteLength: 0,
+      \     timeout: 1000,
       \     isVolatile: v:true,
       \   }
       \ })

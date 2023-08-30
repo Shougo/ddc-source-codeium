@@ -3,7 +3,7 @@
 Author: Shougo <Shougo.Matsu at gmail.com>
 License: MIT license
 
-CONTENTS					*ddc-source-codeium-contents*
+CONTENTS                                         *ddc-source-codeium-contents*
 
 Introduction		|ddc-source-codeium-introduction|
 Install			|ddc-source-codeium-install|
@@ -12,7 +12,7 @@ FAQ			|ddc-source-codeium-faq|
 
 
 ==============================================================================
-INTRODUCTION				*ddc-source-codeium-introduction*
+INTRODUCTION                                 *ddc-source-codeium-introduction*
 
 This source collects items from Codeium.
 
@@ -22,7 +22,7 @@ https://github.com/yuki-yano/ddc-codeium
 
 
 ==============================================================================
-INSTALL						*ddc-source-codeium-install*
+INSTALL                                           *ddc-source-codeium-install*
 
 Please install both "codeium.vim", "ddc.vim" and "denops.vim".
 
@@ -32,7 +32,7 @@ https://github.com/vim-denops/denops.vim
 
 
 ==============================================================================
-EXAMPLES					*ddc-source-codeium-examples*
+EXAMPLES                                         *ddc-source-codeium-examples*
 >
 	let g:codeium_disable_bindings = 1
 
@@ -44,13 +44,13 @@ EXAMPLES					*ddc-source-codeium-examples*
 	\     mark: 'codeium',
 	\     minAutoCompleteLength: 0,
 	\     timeout: 1000,
-	\     isVolatile: true,
+	\     isVolatile: v:true,
 	\   }
 	\ })
 <
 
 ==============================================================================
-FAQ						*ddc-source-codeium-faq*
+FAQ                                                   *ddc-source-codeium-faq*
 
 Q: The items is not updated or generated.
 

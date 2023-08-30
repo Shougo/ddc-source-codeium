@@ -24,12 +24,12 @@ let g:codeium_disable_bindings = 1
 call ddc#custom#patch_global('sources', ['codeium'])
 
 call ddc#custom#patch_global('sourceOptions', #{
-      \   input: #{
-      \     mark: 'codeium',
-      \     matchers: [],
-      \     minAutoCompleteLength: 0,
-      \     timeout: 1000,
-      \     isVolatile: v:true,
-      \   }
-      \ })
+	\   codeium: #{
+	\     matchers: [],
+	\     mark: 'codeium',
+	\     minAutoCompleteLength: 0,
+	\     timeout: 1000,
+	\     isVolatile: true,
+	\   }
+	\ })
 ```

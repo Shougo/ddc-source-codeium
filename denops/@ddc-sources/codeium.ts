@@ -2,10 +2,10 @@ import {
   BaseSource,
   GatherArguments,
   OnCompleteDoneArguments,
-} from "https://deno.land/x/ddc_vim@v3.4.0/base/source.ts";
-import { DdcGatherItems } from "https://deno.land/x/ddc_vim@v3.4.0/types.ts";
-import { fn } from "https://deno.land/x/ddc_vim@v3.4.0/deps.ts";
-import { delay } from "https://deno.land/std@0.187.0/async/delay.ts";
+} from "https://deno.land/x/ddc_vim@v4.0.5/base/source.ts";
+import { DdcGatherItems } from "https://deno.land/x/ddc_vim@v4.0.5/types.ts";
+import { fn } from "https://deno.land/x/ddc_vim@v4.0.5/deps.ts";
+import { delay } from "https://deno.land/std@0.205.0/async/delay.ts";
 
 export type CompletionMetadata = {
   word: string;

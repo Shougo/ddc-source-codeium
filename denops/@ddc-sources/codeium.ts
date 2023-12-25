@@ -2,10 +2,10 @@ import {
   BaseSource,
   GatherArguments,
   OnCompleteDoneArguments,
-} from "https://deno.land/x/ddc_vim@v4.0.5/base/source.ts";
-import { DdcGatherItems } from "https://deno.land/x/ddc_vim@v4.0.5/types.ts";
-import { fn } from "https://deno.land/x/ddc_vim@v4.0.5/deps.ts";
-import { delay } from "https://deno.land/std@0.205.0/async/delay.ts";
+} from "https://deno.land/x/ddc_vim@v4.3.1/base/source.ts";
+import { DdcGatherItems } from "https://deno.land/x/ddc_vim@v4.3.1/types.ts";
+import { fn } from "https://deno.land/x/ddc_vim@v4.3.1/deps.ts";
+import { delay } from "https://deno.land/std@0.210.0/async/delay.ts";
 
 export type CompletionMetadata = {
   word: string;
@@ -35,6 +35,7 @@ export class Source extends BaseSource<Params> {
       return [];
     }
 
+    //const startTime = Date.now();
     await args.denops.call("codeium#Complete");
 
     while (!(await fn.exists(args.denops, "b:_codeium_completions.items"))) {
@@ -45,6 +46,7 @@ export class Source extends BaseSource<Params> {
       "eval",
       "get(get(b:, '_codeium_completions', {}), 'items', [])",
     ) as CompletionItem[];
+    //console.log(`${Date.now() - startTime} ms`);
 
     const items: DdcGatherItems = [];
     for (const completion of completions) {

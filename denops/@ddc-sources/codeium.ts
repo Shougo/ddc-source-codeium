@@ -1,12 +1,12 @@
-import { type DdcGatherItems } from "jsr:@shougo/ddc-vim@7.0.0/types";
+import { type DdcGatherItems } from "jsr:@shougo/ddc-vim@~7.0.0/types";
 import {
   BaseSource,
   type GatherArguments,
   type OnCompleteDoneArguments,
-} from "jsr:@shougo/ddc-vim@7.0.0/source";
+} from "jsr:@shougo/ddc-vim@~7.0.0/source";
 
-import * as fn from "jsr:@denops/std@7.1.1/function";
-import { delay } from "jsr:@std/async@1.0.4/delay";
+import * as fn from "jsr:@denops/std@~7.1.1/function";
+import { delay } from "jsr:@std/async@~1.0.4/delay";
 
 export type CompletionMetadata = {
   word: string;

@@ -99,7 +99,7 @@ export class Source extends BaseSource<Params> {
       }
     }
 
-    return this.#unprintable!.convertItems(
+    return await this.#unprintable!.convertItems(
       args.denops,
       items,
       args.context.nextInput,

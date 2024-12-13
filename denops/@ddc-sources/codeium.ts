@@ -1,16 +1,16 @@
-import { type DdcGatherItems } from "jsr:@shougo/ddc-vim@~7.1.0/types";
+import { type DdcGatherItems } from "jsr:@shougo/ddc-vim@~9.1.0/types";
 import {
   BaseSource,
   type GatherArguments,
   type OnCompleteDoneArguments,
   type OnInitArguments,
-} from "jsr:@shougo/ddc-vim@~7.1.0/source";
+} from "jsr:@shougo/ddc-vim@~9.1.0/source";
 import {
   Unprintable,
   type UnprintableUserData,
 } from "jsr:@milly/ddc-unprintable@~4.0.0";
 
-import * as fn from "jsr:@denops/std@~7.3.0/function";
+import * as fn from "jsr:@denops/std@~7.4.0/function";
 import { delay } from "jsr:@std/async@~1.0.4/delay";
 
 export type CompletionItem = {
@@ -60,7 +60,7 @@ export class Source extends BaseSource<Params> {
     ) as CompletionItem[];
     //console.log(`${Date.now() - startTime} ms`);
 
-    const items: DdcGatherItems = [];
+    const items: DdcGatherItems<UserData> = [];
     for (const completion of completions) {
       const text = completion.completion.text;
       const word = text.split("\n")[0].slice(args.completePos);

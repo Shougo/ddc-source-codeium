@@ -1,17 +1,17 @@
-import { type DdcGatherItems } from "jsr:@shougo/ddc-vim@~9.1.0/types";
+import type { DdcGatherItems } from "@shougo/ddc-vim/types";
 import {
   BaseSource,
   type GatherArguments,
   type OnCompleteDoneArguments,
   type OnInitArguments,
-} from "jsr:@shougo/ddc-vim@~9.1.0/source";
+} from "@shougo/ddc-vim/source";
 import {
   Unprintable,
   type UnprintableUserData,
-} from "jsr:@milly/ddc-unprintable@~4.0.0";
+} from "@milly/ddc-unprintable";
 
-import * as fn from "jsr:@denops/std@~7.4.0/function";
-import { delay } from "jsr:@std/async@~1.0.4/delay";
+import * as fn from "@denops/std/function";
+import { delay } from "@std/async/delay";
 
 export type CompletionItem = {
   completion: {
